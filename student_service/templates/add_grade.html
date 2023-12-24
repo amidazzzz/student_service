@@ -1,0 +1,14 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Add Grade for {{ student.first_name }} {{ student.last_name }}</h1>
+
+  <form method="post" action="{% url 'add_grade' student_id=student.id %}">
+    {% csrf_token %}
+    <label for="subject">Subject:</label>
+    <input type="text" name="subject" required><br>
+    <label for="value">Value:</label>
+    <input type="number" name="value" required><br>
+    <button type="submit">Add Grade</button>
+  </form>
+{% endblock %}

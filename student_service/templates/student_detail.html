@@ -1,0 +1,28 @@
+<!-- student_service/templates/student_service/student_detail.html -->
+
+{% extends 'base_generic.html' %}
+
+{% block title %}{{ student.first_name }} {{ student.last_name }} Details{% endblock %}
+
+{% block content %}
+    <h1>{{ student.first_name }} {{ student.last_name }} Details</h1>
+
+    {% if grades %}
+        <h2>Grades:</h2>
+        <ul>
+            {% for grade in grades %}
+                <li>{{ grade.subject }}: {{ grade.value }}</li>
+            {% endfor %}
+        </ul>
+        <p>Average Grade: {{ average_grade|default:"N/A" }}</p>
+    {% else %}
+        <p>No grades available for this student.</p>
+    {% endif %}
+
+    <!-- Button to navigate to adding grades -->
+    <a href="{% url 'add_grade' student.id %}">Add Grade</a>
+
+    <!-- You can display other details of the student here -->
+
+    <a href="{% url 'student_list' %}">Back to Student List</a>
+{% endblock %}

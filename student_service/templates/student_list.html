@@ -1,0 +1,17 @@
+<!-- student_service/templates/student_service/student_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+</head>
+<body>
+    <h1>Student List</h1>
+    <ul>
+        {% for student in students %}
+            <li>{{ student.first_name }} {{ student.last_name }} - <a href="{% url 'student_detail' student.id %}">Details</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_student' %}">Add Student</a>
+</body>
+</html>
